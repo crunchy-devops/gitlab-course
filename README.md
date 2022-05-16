@@ -22,7 +22,9 @@ docker-compose up -d  # execute docker-compose script for starting all container
 
 Get portainer tool up and running
 ```shell
-docker run -d -p 9000:9000 --name portainer -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer -H unix:///var/run/docker.sock 
+docker run -d -p 9000:9000 --name portainer -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer-ce:2.0.1 -H unix:///var/run/docker.sock 
+# go to container gitlab-course_gitlab-ce_1 and select a exec_console icon 
+# enter cat /etc/gitlab/initial_root_password
 ```
 
 or directly using docker exec  
@@ -32,4 +34,11 @@ Copy and paste this password in your browser at
 http://<ip_address>:20000
 Log in as root using this password
 
-## Configure Gitlab
+## Configure manually Gitlab runner 
+```shell
+docker run --rm -it -v /opt/gitlab-runner-config:/etc/gitlab-runner gitlab/gitlab-runner register
+```
+
+## Change gitlab-runner configuration 
+Go to `/etc/gitlab-runner`
+add `network_mode="gitlab-course_prodnetwork"` at the end of `[runners.docker]` block code
