@@ -11,7 +11,7 @@ services:
     image: gitlab/gitlab-ce:latest
     environment:
        GITLAB_OMNIBUS_CONFIG: |
-         gitlab_rails['gitlab_shell_ssh_port'] = 2222apt
+         gitlab_rails['gitlab_shell_ssh_port'] = 2222
     ports:
       - "443:443"
       - "20000:80"
