@@ -33,7 +33,6 @@ services:
     networks:
       - prodnetwork
 
-
   gitlab-runner:
     hostname: gitlab-runner
     image: gitlab/gitlab-runner:latest

@@ -42,3 +42,4 @@ docker run --rm -it -v /opt/gitlab-runner-config:/etc/gitlab-runner gitlab/gitla
 ## Change gitlab-runner configuration 
 Go to `/etc/gitlab-runner`
 add `network_mode="gitlab-course_prodnetwork"` at the end of `[runners.docker]` block code
+do a `gitlab-runner restart`
