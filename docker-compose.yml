@@ -14,7 +14,7 @@ services:
          gitlab_rails['gitlab_shell_ssh_port'] = 2222
     ports:
       - "443:443"
-      - "20000:80"
+      - "80:80"
       - "2222:22"
     volumes:
       - /opt/gitlab/config:/etc/gitlab
@@ -39,5 +39,19 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /opt/gitlab-runner-config:/etc/gitlab-runner
+    networks:
+      - prodnetwork
+
+  nexus:
+    hostname: nexus
+    image: sonatype/nexus3
+    ports:
+      - "18081:8081"
+    networks:
+      - prodnetwork
+
+  vault:
+    hostname: vault
+    image: vault
     networks:
       - prodnetwork
