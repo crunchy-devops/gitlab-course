@@ -1,0 +1,21 @@
+version: '3.3'
+
+networks:
+  prodnetwork:
+    external:
+      name: bridge
+
+services:
+  gitlab-runner:
+    hostname: runner
+    images: bitnami/gitlab-runner:latest
+    #image: gitlab/gitlab-runner:latest
+    #volumes:
+    #  - /var/run/docker.sock:/var/run/docker.sock
+    #  - /opt/gitlab-runner-config:/etc/gitlab-runner
+    networks:
+      - prodnetwork
+    deploy:
+      placement:
+        constraints: [node.hostname == runner]
+
