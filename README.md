@@ -4,7 +4,7 @@
 ```shell
 sudo apt-get update  # update repo ref
 sudo apt install -y python3.8-venv docker.io python3-pip  # install docker ce package 
-sudo usermod -aG docker ubuntu
+sudo usermod -aG docker $USER
 ```
 
 ## Install a virtualenv for docker-compose
@@ -20,19 +20,20 @@ docker-compose up -d  # execute docker-compose script for starting all container
 ```
 
 ### Run portainer for getting gitlab initial password
-
-Get portainer tool up and running
 ```shell
-docker run -d -p 9000:9000 --name portainer -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer-ce:2.0.1 -H unix:///var/run/docker.sock 
-# go to container gitlab-course_gitlab-ce_1 and select a exec_console icon 
-# enter cat /etc/gitlab/initial_root_password
+docker volume create portainer_data
+docker run -d -p 32125:8000 -p 32126:9443 --name portainer --restart=always \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v portainer_data:/data portainer/portainer-ce:latest 
 ```
-
+Get portainer tool up and running   
+go to container gitlab-course_gitlab-ce_1 and select a exec_console icon   
+enter cat /etc/gitlab/initial_root_password
 or directly using docker exec  
 `docker exec -it gitlab-course_gitlab-ce_1 cat /etc/gitlab/initial_root_password`
 Here, it's randomly generated password available for 24 hours   
 Copy and paste this password in your browser at 
-http://<ip_address>:20000
+http://<ip_address>
 Log in as root using this password
 
 ## Configure manually a Gitlab runner 
