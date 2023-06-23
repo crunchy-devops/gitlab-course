@@ -9,7 +9,6 @@ networks:
 services:
   gitlab-ce:
     hostname: gitlab-ce
-
     image: gitlab/gitlab-ce:latest
     environment:
        GITLAB_OMNIBUS_CONFIG: |
