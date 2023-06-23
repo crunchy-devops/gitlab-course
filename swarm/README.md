@@ -7,8 +7,13 @@ brctl show
 ip -4 addr show dev docker0
 ```
 ## Swarm init
-
-docker swarm join --token SWMTKN-1-3o9zd9f0ut0dh2nca4erg0r195elkfalfhzqk060hdtdxvag8p-09dfhzc8ivc3zbqu2njdmu2ve 172.16.0.21:2377
+```shell
+docker swarm init
+docker node ls
+docker node update --label-add gitlab=master gitlab-ci-2
+docker node inspect --pretty gitlab-ci-2 | grep -A 5 Labels:
+docker swarm join --token 8ivc3zbqu2njdmu2ve 172.16.0.21:2377
+```
 
 ## Check 
 ```shell
@@ -17,7 +22,7 @@ brctl show
 ip -4 addr show dev docker0
 ```
 
-## get back the token 
+## get back your token 
 ```shell
 docker swarm join-token worker
 ```
@@ -34,3 +39,5 @@ gitlab-runner register --name hello-world \
 --url http://170.75.173.181 \
 --registration-token GR1348941ydeejiTyn-ZFjzAtCyhSo
 ```
+
+
