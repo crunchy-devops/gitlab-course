@@ -23,7 +23,6 @@ services:
       - /opt/gitlab/data:/var/opt/gitlab
     networks:
       - prodnetwork
-
   gitlab-runner:
     hostname: runner
     images: bitnami/gitlab-runner:latest
@@ -36,7 +35,6 @@ services:
     deploy:
       placement:
         constraints: [node.hostname == runner-2]
-
   sonar:
     hostname: sonar
     image: sonarqube:9.4-developer
@@ -44,7 +42,6 @@ services:
       - "19000:9000"
     networks:
       - prodnetwork
-
   nexus:
     hostname: nexus
     image: sonatype/nexus3
@@ -52,7 +49,6 @@ services:
       - "18081:8081"
     networks:
       - prodnetwork
-
   vault:
     hostname: vault
     image: vault
