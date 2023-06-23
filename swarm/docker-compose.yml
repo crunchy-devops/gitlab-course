@@ -2,8 +2,7 @@ version: '3.3'
 
 networks:
   prodnetwork:
-    external:
-      name: bridge
+
 
 
 services:
