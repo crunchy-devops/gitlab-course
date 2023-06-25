@@ -5,10 +5,10 @@ networks:
     external:
       name: bridge
 
-
 services:
   gitlab-ce:
     hostname: gitlab-ce
+
     image: gitlab/gitlab-ce:latest
     environment:
        GITLAB_OMNIBUS_CONFIG: |
@@ -23,18 +23,6 @@ services:
       - /opt/gitlab/data:/var/opt/gitlab
     networks:
       - prodnetwork
-  gitlab-runner:
-    hostname: runner
-    images: bitnami/gitlab-runner:latest
-    #image: gitlab/gitlab-runner:latest
-    #volumes:
-    #  - /var/run/docker.sock:/var/run/docker.sock
-    #  - /opt/gitlab-runner-config:/etc/gitlab-runner
-    networks:
-      - prodnetwork
-    deploy:
-      placement:
-        constraints: [node.hostname == runner-2]
   sonar:
     hostname: sonar
     image: sonarqube:9.4-developer
@@ -54,3 +42,16 @@ services:
     image: vault
     networks:
       - prodnetwork
+
+  gitlab-runner:
+    hostname: runner-2
+    image: bitnami/gitlab-runner:latest
+    #image: gitlab/gitlab-runner:latest
+    #volumes:
+    #  - /var/run/docker.sock:/var/run/docker.sock
+    #  - /opt/gitlab-runner-config:/etc/gitlab-runner
+    networks:
+      - prodnetwork
+    deploy:
+      placement:
+        constraints: [node.hostname == runner-2 ]

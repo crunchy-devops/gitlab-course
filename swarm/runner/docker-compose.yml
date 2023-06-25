@@ -7,7 +7,7 @@ networks:
 
 services:
   gitlab-runner:
-    hostname: runner
+    hostname: runner-2
     images: bitnami/gitlab-runner:latest
     #image: gitlab/gitlab-runner:latest
     #volumes:
@@ -17,5 +17,5 @@ services:
       - prodnetwork
     deploy:
       placement:
-        constraints: [node.hostname == runner]
+        constraints: [node.hostname == runner-2 ]
 
