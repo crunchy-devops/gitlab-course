@@ -27,14 +27,14 @@ services:
     hostname: sonar
     image: sonarqube:9.4-developer
     ports:
-      - "19000:9000"
+      - "30900:9000"
     networks:
       - prodnetwork
   nexus:
     hostname: nexus
     image: sonatype/nexus3
     ports:
-      - "18081:8081"
+      - "30081:8081"
     networks:
       - prodnetwork
   vault:
@@ -44,7 +44,7 @@ services:
       - prodnetwork
 
   gitlab-runner:
-    hostname: runner-2
+    hostname: runner
     image: bitnami/gitlab-runner:latest
     #image: gitlab/gitlab-runner:latest
     #volumes:
@@ -54,4 +54,4 @@ services:
       - prodnetwork
     deploy:
       placement:
-        constraints: [node.hostname == runner-2 ]
+        constraints: [node.hostname == runner ]

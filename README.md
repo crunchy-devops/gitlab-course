@@ -18,7 +18,8 @@ source venv/bin/activate  # activate the virtual env
 pip3 install pip --upgrade
 pip3 install docker-compose  # install python package docker-compose 
 cd swarm
-docker-compose up -d  # execute docker-compose script for starting all containers
+swarm init
+#docker-compose up -d  # execute docker-compose script for starting all containers
 ```
 
 ### Run portainer for getting gitlab initial password
@@ -34,8 +35,9 @@ enter cat /etc/gitlab/initial_root_password
 or directly using docker exec  
 `docker exec -it gitlab-course_gitlab-ce_1 cat /etc/gitlab/initial_root_password`
 Here, it's randomly generated password available for 24 hours   
-Copy and paste this password in your browser at 
-http://<ip_address>
+Copy and paste this password in your browser at     
+http://<ip_address>  
+if you have some trouble reset password ```sudo gitlab-rake "gitlab:password:reset"```  
 Log in as root using this password
 
 ## Configure manually a Gitlab runner 
