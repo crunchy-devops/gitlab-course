@@ -47,8 +47,8 @@ services:
     hostname: runner
     image: bitnami/gitlab-runner:latest
     #image: gitlab/gitlab-runner:latest
-    #volumes:
-    #  - /var/run/docker.sock:/var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     #  - /opt/gitlab-runner-config:/etc/gitlab-runner
     networks:
       - prodnetwork
