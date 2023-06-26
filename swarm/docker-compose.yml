@@ -25,7 +25,7 @@ services:
       - prodnetwork
   sonar:
     hostname: sonar
-    image: sonarqube:9.4-developer
+    image: sonarqube:8.9.7-community
     ports:
       - "30900:9000"
     networks:
