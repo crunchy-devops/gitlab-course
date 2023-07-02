@@ -17,9 +17,6 @@ python3 -m venv venv  # install a python virtualenv
 source venv/bin/activate  # activate the virtual env
 pip3 install pip --upgrade
 pip3 install docker-compose  # install python package docker-compose 
-cd swarm
-swarm init
-#docker-compose up -d  # execute docker-compose script for starting all containers
 ```
 
 ### Run portainer for getting gitlab initial password
