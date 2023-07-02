@@ -23,6 +23,9 @@ services:
       - /opt/gitlab/data:/var/opt/gitlab
     networks:
       - prodnetwork
+    deploy:
+      placement:
+        constraints: [node.labels.gitlab == master]
   sonar:
     hostname: sonar
     image: sonarqube:8.9.7-community
