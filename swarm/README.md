@@ -40,27 +40,6 @@ docker swarm join --token 8ixxxxxxx xxxxxx:2377  # add a runner node
 sudo mkdir -p /opt/gitlab/config
 sudo mkdir -p /opt/gitlab/logs
 sudo mkdir -p /opt/gitlab/data
-docker stack deploy -c docker-compose.yml gitlab
-```
-
-docker service ps gitlab_gitlab-ce --no-trunc
- sudo mkdir -p /opt/gitlab/config
- sudo mkdir -p /opt/gitlab/logs
- sudo mkdir -p /opt/gitlab/data
- docker service ps gitlab_gitlab-ce --no-trunc
- docker service ls 
-```
-
-## Check 
-```shell
-docker network ls
-brctl show
-ip -4 addr show dev docker0
-```
-
-## get back your token 
-```shell
-docker swarm join-token worker
 ```
 
 ## Run docker-compose for swarm 
@@ -68,20 +47,21 @@ docker swarm join-token worker
  docker stack deploy -c docker-compose.yml gitlab
 ```
 
-## run on runner 
+## Register the runner  
 ```shell
 docker exec -it --user root  gitlab_gitlab-runner.xxxxx /bin/bash
-gitlab-runner register --name hello-world \
---url http://170.75.173.181 \
---registration-token GR1348941ydeejiTyn-ZFjzAtCyhSo
+
+gitlab-runner register --name <Project name> \
+--url http://<ip_master_address> \
+--registration-token <token>
 ```
 
 ## reload gitlab runner
 ```shell
 # uncheck shared runner
 gitlab-runner verifiy
-#start the pipeline in the web interface 
-gitlab-runner --debug run 
+#start manullaly the runner in docker exec  
+gitlab-runner run 
 ```
 
 

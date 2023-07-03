@@ -25,3 +25,4 @@ check_interval = 0
     volumes = ["/cache","/var/run/docker.sock:/var/run/docker.sock"]
     shm_size = 0
     network_mode = "gitlab-course_prodnetwork"
+    extra_hosts = ["gitlab-ce:10.128.0.2"]
