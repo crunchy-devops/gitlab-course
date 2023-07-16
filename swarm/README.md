@@ -45,6 +45,7 @@ sudo mkdir -p /opt/gitlab/data
 ## Run docker-compose for swarm 
 ```yaml
  docker stack deploy -c docker-compose.yml gitlab
+ watch docker service ls 
 ```
 
 ## Register the runner  

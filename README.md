@@ -30,7 +30,7 @@ Get portainer tool up and running
 go to container gitlab-course_gitlab-ce_1 and select a exec_console icon   
 enter cat /etc/gitlab/initial_root_password
 or directly using docker exec  
-`docker exec -it gitlab-course_gitlab-ce_1 cat /etc/gitlab/initial_root_password`
+`docker exec -it git cat /etc/gitlab/initial_root_password`
 Here, it's randomly generated password available for 24 hours   
 Copy and paste this password in your browser at     
 http://<ip_address>  
