@@ -57,4 +57,4 @@ services:
       - prodnetwork
     deploy:
       placement:
-        constraints: [node.hostname == runner ]
+        constraints: [node.labels.gitlab== data-1 ]

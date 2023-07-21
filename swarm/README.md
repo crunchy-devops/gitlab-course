@@ -14,7 +14,7 @@ sudo apt-get update  # update repo ref
 sudo apt install -y python3.8-venv docker.io python3-pip  # install docker ce package 
 sudo usermod -aG docker $USER
 ```
-## log out and login again 
+## Log out and login again 
 Check with a ```docker ps``` on master and runner  
 
 
@@ -57,7 +57,7 @@ gitlab-runner register --name <Project name> \
 --registration-token <token>
 ```
 
-## reload gitlab runner
+## Reload gitlab runner
 ```shell
 # uncheck shared runner
 gitlab-runner verifiy
