@@ -20,7 +20,7 @@ analyze:sonar:
     - sonar-scanner
   rules:
     # SonarQube CommunityEdition only supports analyzing a single branch.
-    # So only run on master.
+    # So only run on main.
     - if: '$CI_COMMIT_BRANCH == "main"'
       when: on_success
     - when: never

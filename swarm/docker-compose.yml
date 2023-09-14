@@ -49,6 +49,7 @@ services:
   gitlab-runner:
     hostname: runner
     image: bitnami/gitlab-runner:latest
+    privileged: true
     #image: gitlab/gitlab-runner:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
