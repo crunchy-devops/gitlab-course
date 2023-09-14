@@ -40,6 +40,9 @@ services:
       - "30081:8081"
     networks:
       - prodnetwork
+    deploy:
+      placement:
+        constraints: [node.labels.gitlab == master]
   vault:
     hostname: vault
     image: vault
