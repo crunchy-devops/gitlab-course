@@ -33,6 +33,9 @@ services:
       - "30900:9000"
     networks:
       - prodnetwork
+    deploy:
+      placement:
+        constraints: [node.labels.gitlab == master]
   nexus:
     hostname: nexus
     image: sonatype/nexus3
