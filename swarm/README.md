@@ -40,12 +40,14 @@ docker swarm join --token 8ixxxxxxx xxxxxx:2377  # add a runner node
 sudo mkdir -p /opt/gitlab/config
 sudo mkdir -p /opt/gitlab/logs
 sudo mkdir -p /opt/gitlab/data
+docker node update --label-add gitlab=data-1 <NODE_RUNNER> # set a label
+docker node inspect --pretty <NODE_RUNNER> | grep -A 5 Labels: # check
 ```
 
 ## Run docker-compose for swarm 
 ```yaml
  docker stack deploy -c docker-compose.yml gitlab
- watch docker service ls 
+ watch docker service ls  # and wait
 ```
 
 ## Register the runner  
