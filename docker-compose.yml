@@ -36,6 +36,7 @@ services:
   gitlab-runner:
     hostname: gitlab-runner
     image: gitlab/gitlab-runner:latest
+    privileged: true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /opt/gitlab-runner-config:/etc/gitlab-runner
