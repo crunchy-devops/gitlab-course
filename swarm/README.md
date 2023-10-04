@@ -62,7 +62,7 @@ gitlab-runner register --name <Project name> \
 ## Reload gitlab runner
 ```shell
 # uncheck shared runner
-gitlab-runner verifiy
+gitlab-runner verify
 #start manullaly the runner in docker exec  
 gitlab-runner run 
 ```
