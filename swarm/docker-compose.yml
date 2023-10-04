@@ -45,7 +45,7 @@ services:
       - prodnetwork
     deploy:
       placement:
-        constraints: [node.labels.gitlab == master]
+        constraints: [node.labels.gitlab == master]   
   vault:
     hostname: vault
     image: vault
